@@ -8,7 +8,6 @@
 using namespace std;
 
 #pragma region variables
-string ip = "", mask = ""; // ip and mask
 std::vector <std::string> ipSepVec[4]; // string ip vector
 std::vector <std::string> maskSepVec[4]; // string mask vector
 
@@ -48,7 +47,28 @@ int BinToDec(string str) {
 }
 #pragma endregion
 
-int main() {
+int main(int argc, char* argv[]) {
+
+    if (argc - 1 == 1) {
+        if(strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0) {
+            cout << "This is simple subnet ip calculator.\n";
+            cout << "SYNTAX: ipCalc [OPTION]\n";
+            cout << "SYNTAX: ipCalc [IP] [MASK]\n";
+            cout << "Commands: \n";
+            cout << "-h   --help\n";
+            cout << "       Displays this message on screen\n";
+            cout << argc;
+        } else {
+            cerr << "\033[31mERROR:\033[0m Such argument doesn't exist or command is incomplete!\n";
+            cerr << "\033[31mERROR:\033[0m Write ipCalc --help for more informations\n";
+        }
+    } else if (argc - 1 == 2) {
+    string ip;
+    string mask;
+
+    ip.assign(argv[1]);
+    mask.assign(argv[2]);
+
     #pragma region info
     cout << "====================================\n";
     cout << "|   subnet IP Address Calculator   |\n";
@@ -58,16 +78,6 @@ int main() {
     cout << "| getting one of existing subnet   |\n";
     cout << "| IP addresses.                    |\n";
     cout << "====================================\n\n";
-    #pragma endregion
-
-    #pragma region input
-    cout << "================================================================\n";
-    cout << "| enter IP address: ";
-    cin >> ip;
-    cout << "================================================================\n";
-    cout << "| enter subnet mask address: ";
-    cin >> mask;
-    cout << "================================================================\n";
     #pragma endregion
 
     #pragma region wr-input-to-str
@@ -123,4 +133,7 @@ int main() {
     cout << "| Subnet address: " << netAddSep[0] << "." << netAddSep[1] << "." << netAddSep[2] << "." << netAddSep[3] << "\n";
     cout << "================================================================\n";
     #pragma endregion
+    } else {
+        cerr << "\033[31mERROR:\033[0m Null or more arguments has been given!\n";
+    }
 }
