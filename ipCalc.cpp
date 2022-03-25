@@ -50,14 +50,14 @@ int BinToDec(string str) {
 
 int main() {
     #pragma region info
-    cout << "=================================\n";
-    cout << "|     IP Address Calculator\n";
-    cout << "=================================\n";
-    cout << "| With this calculator you can\n";
-    cout << "| calculate network IP address by\n";
-    cout << "| getting one of existing subnet\n";
-    cout << "| IP addresses.\n";
-    cout << "=================================\n\n";
+    cout << "====================================\n";
+    cout << "|   subnet IP Address Calculator   |\n";
+    cout << "====================================\n";
+    cout << "| With this calculator you can     |\n";
+    cout << "| calculate network IP address by  |\n";
+    cout << "| getting one of existing subnet   |\n";
+    cout << "| IP addresses.                    |\n";
+    cout << "====================================\n\n";
     #pragma endregion
 
     #pragma region input
