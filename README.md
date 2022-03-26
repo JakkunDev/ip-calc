@@ -25,3 +25,16 @@ ipcalc [IP] [MASK]
 -i or --ip        You can input ip address after it.
 
 -m or --mask      You can input mask address after it.
+
+
+
+**example of usage:**
+
+ipcalc -i 192.168.1.0 -m 255.255.255.0
+
+ipcalc -m 255.255.255.0 -i 192.168.1.0
+
+
+ipcalc 192.168.1.0 255.255.255.0
+
+**YOU CAN'T SWAP THE MASK AND IP ADDRESS IN THE LAST EXAMPLE**
