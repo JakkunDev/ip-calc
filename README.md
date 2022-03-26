@@ -87,5 +87,3 @@ $ ipcalc 192.168.1.0 255.255.255.0
  > | Subnet address: 192.168.1.0
    ================================================================
 ```
-
-**!!! YOU CAN'T SWAP THE MASK AND IP ADDRESS IN THE LAST EXAMPLE !!!**
