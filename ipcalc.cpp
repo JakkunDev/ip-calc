@@ -126,6 +126,10 @@ int main(int argc, char* argv[]) {
                                     DecToBin(stoi(maskSep[2])), DecToBin(stoi(maskSep[3])) }; 
 
         cout << "================================================================\n";
+        cout << "| IP address: " << ip << "\n";
+        cout << "================================================================\n";
+        cout << "| Mask address: " << mask << "\n";
+        cout << "================================================================\n";
         cout << "| IP address in Binary: " << ipSepBin[0] << "." << ipSepBin[1] << "." << ipSepBin[2] << "." << ipSepBin[3] << "\n";
         cout << "================================================================\n";
         cout << "| Mask address in Binary: " << maskSepBin[0] << "." << maskSepBin[1] << "." << maskSepBin[2] << "." << maskSepBin[3] << "\n";
