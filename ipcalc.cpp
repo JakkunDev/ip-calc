@@ -159,6 +159,6 @@ int main(int argc, char* argv[]) {
     cout << "================================================================\n";
     #pragma endregion
     } else {
-        cerr << "\033[31mERROR:\033[0m Null or more arguments has been given!\n";
+        cerr << "\033[31mERROR:\033[0m Null or too many arguments has been given!\n";
     }
 }
