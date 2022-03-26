@@ -50,19 +50,10 @@ int BinToDec(string str) {
 #pragma endregion
 
 int main(int argc, char* argv[]) {
-    #pragma region info
-    cout << "====================================\n";
-    cout << "|   subnet IP Address Calculator   |\n";
-    cout << "====================================\n";
-    cout << "| With this calculator you can     |\n";
-    cout << "| calculate network IP address by  |\n";
-    cout << "| getting one of existing subnet   |\n";
-    cout << "| IP addresses.                    |\n";
-    cout << "====================================\n\n";
-    #pragma endregion
 
+    // command input
     if (argc - 1 == 1) {
-        if(strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0) {
+        if(string(argv[1]) == "--help" || string(argv[3]) == "-h") {
             cout << "This is simple subnet ip calculator.\n";
             cout << "SYNTAX: ipCalc [OPTION]\n";
             cout << "SYNTAX: ipCalc [IP] [MASK]\n";
@@ -79,16 +70,38 @@ int main(int argc, char* argv[]) {
             ip.assign(argv[1]);
             mask.assign(argv[2]);
         } else {
-            if(strcmp(argv[1], "--ip") == 0 || strcmp(argv[1], "-i") == 0 && strcmp(argv[3], "--mask") == 0 || strcmp(argv[3], "-m") == 0) {
+            if(string(argv[1]) == "-ip" || string(argv[1]) == "-i") {
                 ip.assign(argv[2]);
-                mask.assign(argv[4]);
-            } 
-            if(strcmp(argv[3], "--ip") == 0 || strcmp(argv[3], "-i") && strcmp(argv[1], "--mask") == 0 || strcmp(argv[1], "-m") == 0) {
+            } else if(string(argv[3]) == "-ip" || string(argv[3]) == "-i") {
                 ip.assign(argv[4]);
+            } else {
+                cerr << "\033[31mERROR:\033[0m Such argument doesn't exist or command is incomplete!\n";
+                cerr << "Try typing ipcalc \033[32m--help\033[0m for more informations\n";
+                exit(1);
+            }
+
+            if (string(argv[3]) == "--mask" || string(argv[3]) == "-m") {
+                mask.assign(argv[4]);
+            } else if (string(argv[1]) == "--mask" || string(argv[1]) == "-m") {
                 mask.assign(argv[2]);
-            } 
+            } else {
+                cerr << "\033[31mERROR:\033[0m Such argument doesn't exist or command is incomplete!\n";
+                cerr << "Try typing ipcalc \033[32m--help\033[0m for more informations\n";
+                exit(1);
+            }
         }
 
+        #pragma region info
+        cout << "====================================\n";
+        cout << "|   subnet IP Address Calculator   |\n";
+        cout << "====================================\n";
+        cout << "| With this calculator you can     |\n";
+        cout << "| calculate network IP address by  |\n";
+        cout << "| getting one of existing subnet   |\n";
+        cout << "| IP addresses.                    |\n";
+        cout << "====================================\n\n";
+        #pragma endregion
+        
         #pragma region wr-input-to-str
         istringstream issIP(ip);
         string partIP;
