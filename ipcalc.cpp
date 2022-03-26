@@ -125,6 +125,7 @@ int main(int argc, char* argv[]) {
         string maskSepBin[4] = { DecToBin(stoi(maskSep[0])), DecToBin(stoi(maskSep[1])), 
                                     DecToBin(stoi(maskSep[2])), DecToBin(stoi(maskSep[3])) }; 
 
+        cout << "================================================================\n";
         cout << "| IP address in Binary: " << ipSepBin[0] << "." << ipSepBin[1] << "." << ipSepBin[2] << "." << ipSepBin[3] << "\n";
         cout << "================================================================\n";
         cout << "| Mask address in Binary: " << maskSepBin[0] << "." << maskSepBin[1] << "." << maskSepBin[2] << "." << maskSepBin[3] << "\n";
