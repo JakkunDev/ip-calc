@@ -33,7 +33,7 @@ $ ipcalc [IP] [MASK]
 **4. for the moment being there's only five options:**
 
 ```
--h or --help                     Displays info about avaible options.
+-h or --help                     Displays info about avaible options and version of software.
 
 -i or --ip[=IP]                  You can input ip address after it
 -m or --mask[=MASK]              You can input mask address after it
