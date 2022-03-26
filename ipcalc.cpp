@@ -53,23 +53,23 @@ int main(int argc, char* argv[]) {
 
     // command input
     if (argc - 1 == 1) {
-        if(string(argv[1]) == "--help" || string(argv[3]) == "-h") {
+        if(string(argv[1]) == "--help" || string(argv[1]) == "-h") {
             #pragma region info
-            cout << "====================================\n";
-            cout << "|   subnet IP Address Calculator   |\n";
-            cout << "====================================\n";
-            cout << "| With this calculator you can     |\n";
-            cout << "| calculate subnet IP address by   |\n";
-            cout << "| getting one of existing subnet   |\n";
-            cout << "| IP host addresses.               |\n";
-            cout << "====================================\n\n";
+            cout << "   ====================================\n";
+            cout << " > |   subnet IP Address Calculator   |\n";
+            cout << "   ====================================\n";
+            cout << " > | With this calculator you can     |\n";
+            cout << " > | calculate subnet IP address by   |\n";
+            cout << " > | getting one of existing subnet   |\n";
+            cout << " > | IP host addresses.               |\n";
+            cout << "   ====================================\n\n";
             #pragma endregion
             cout << "SYNTAX: ipCalc [OPTION]\n";
             cout << "SYNTAX: ipCalc [IP] [MASK]\n";
             cout << "Commands: \n";
-            cout << "-h   --help            Displays this message on screen and ends\n";
-            cout << "-i   --ip[=IP]         You can input ip address after it\n";
-            cout << "-m   --mask[=MASK]     You can input mask address after it\n";
+            cout << "   -h   --help            Displays this message on screen and ends\n";
+            cout << "   -i   --ip[=IP]         You can input ip address after it\n";
+            cout << "   -m   --mask[=MASK]     You can input mask address after it\n";
         } else {
             cerr << "\033[31mERROR:\033[0m Such argument doesn't exist or command is incomplete!\n";
             cerr << "Try typing ipcalc \033[32m--help\033[0m for more informations\n";
@@ -125,15 +125,15 @@ int main(int argc, char* argv[]) {
         string maskSepBin[4] = { DecToBin(stoi(maskSep[0])), DecToBin(stoi(maskSep[1])), 
                                     DecToBin(stoi(maskSep[2])), DecToBin(stoi(maskSep[3])) }; 
 
-        cout << "================================================================\n";
-        cout << "| IP address: " << ip << "\n";
-        cout << "================================================================\n";
-        cout << "| Mask address: " << mask << "\n";
-        cout << "================================================================\n";
-        cout << "| IP address in Binary: " << ipSepBin[0] << "." << ipSepBin[1] << "." << ipSepBin[2] << "." << ipSepBin[3] << "\n";
-        cout << "================================================================\n";
-        cout << "| Mask address in Binary: " << maskSepBin[0] << "." << maskSepBin[1] << "." << maskSepBin[2] << "." << maskSepBin[3] << "\n";
-        cout << "================================================================\n";
+        cout << "   ================================================================\n";
+        cout << " > | IP address: " << ip << "\n";
+        cout << "   ================================================================\n";
+        cout << " > | Mask address: " << mask << "\n";
+        cout << "   ================================================================\n";
+        cout << " > | IP address in Binary: " << ipSepBin[0] << "." << ipSepBin[1] << "." << ipSepBin[2] << "." << ipSepBin[3] << "\n";
+        cout << "   ================================================================\n";
+        cout << " > | Mask address in Binary: " << maskSepBin[0] << "." << maskSepBin[1] << "." << maskSepBin[2] << "." << maskSepBin[3] << "\n";
+        cout << "   ================================================================\n";
         #pragma endregion
 
         #pragma region subnet
@@ -149,14 +149,14 @@ int main(int argc, char* argv[]) {
         }
     }
     
-    cout << "| Network address in Binary: " << netAddSepBin[0] << "." << netAddSepBin[1] << "." << netAddSepBin[2] << "." << netAddSepBin[3] << "\n";
-    cout << "================================================================\n";
+    cout << " > | Network address in Binary: " << netAddSepBin[0] << "." << netAddSepBin[1] << "." << netAddSepBin[2] << "." << netAddSepBin[3] << "\n";
+    cout << "   ================================================================\n";
 
     string netAddSep[4] = { to_string(BinToDec(netAddSepBin[0])), to_string(BinToDec(netAddSepBin[1])),
                             to_string(BinToDec(netAddSepBin[2])), to_string(BinToDec(netAddSepBin[3])) };
     
-    cout << "| Subnet address: " << netAddSep[0] << "." << netAddSep[1] << "." << netAddSep[2] << "." << netAddSep[3] << "\n";
-    cout << "================================================================\n";
+    cout << " > | Subnet address: " << netAddSep[0] << "." << netAddSep[1] << "." << netAddSep[2] << "." << netAddSep[3] << "\n";
+    cout << "   ================================================================\n";
     #pragma endregion
     } else {
         cerr << "\033[31mERROR:\033[0m Null or too many arguments has been given!\n";
