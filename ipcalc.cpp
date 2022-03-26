@@ -96,9 +96,9 @@ int main(int argc, char* argv[]) {
         cout << "|   subnet IP Address Calculator   |\n";
         cout << "====================================\n";
         cout << "| With this calculator you can     |\n";
-        cout << "| calculate network IP address by  |\n";
+        cout << "| calculate subnet IP address by   |\n";
         cout << "| getting one of existing subnet   |\n";
-        cout << "| IP addresses.                    |\n";
+        cout << "| IP host addresses.               |\n";
         cout << "====================================\n\n";
         #pragma endregion
         
