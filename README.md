@@ -1,40 +1,49 @@
 # Subnet IP Address Calculator
 ### subnet ip calculator in c++
 
-With this calculator you can calculate network IP address by getting one of existing subnet IP addresses.
+With this calculator you can calculate subnet IP address by getting one of existing subnet IP host addresses.
 
-You can build it with command: 
-g++ ipcalc.cpp -o ipcalc
+**1. You can build it with command:**
 
-**and then add it to your commands with:**
+```
+$ g++ ipcalc.cpp -o ipcalc
+```
 
-sudo cp ipcalc /usr/bin/
+**2. and then add it to your commands with:**
 
-**Syntax of this is:**
+```
+$ sudo cp ipcalc /usr/bin/
+```
 
-ipcalc [OPTION]
+**3. Syntax of this is:**
 
-**or:**
+```
+$ ipcalc [OPTION]
+```
 
-ipcalc [IP] [MASK]
+**4. or:**
 
-**for the moment being there's only three options:**
+```
+$ ipcalc [IP] [MASK]
+```
 
+**5. for the moment being there's only three options:**
+
+```
 -h or --help      Displays info about avaible options.
 
 -i or --ip        You can input ip address after it.
 
 -m or --mask      You can input mask address after it.
+```
 
+**6. example of usage:**
+```
+$ ipcalc -i 192.168.1.0 -m 255.255.255.0
 
+$ ipcalc -m 255.255.255.0 -i 192.168.1.0
 
-**example of usage:**
+$ ipcalc 192.168.1.0 255.255.255.0
+```
 
-ipcalc -i 192.168.1.0 -m 255.255.255.0
-
-ipcalc -m 255.255.255.0 -i 192.168.1.0
-
-
-ipcalc 192.168.1.0 255.255.255.0
-
-**YOU CAN'T SWAP THE MASK AND IP ADDRESS IN THE LAST EXAMPLE**
+**!!! YOU CAN'T SWAP THE MASK AND IP ADDRESS IN THE LAST EXAMPLE !!!**
