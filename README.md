@@ -3,31 +3,34 @@
 
 With this calculator you can calculate subnet IP address by getting one of existing subnet IP host addresses.
 
-**1. You can build it with command:**
-
+**1. installation**
+* to intstall it you will need to clone git:
 ```
-$ g++ ipcalc.cpp -o ipcalc
+$ git clone https://github.com/jakkundev/ipcalc.git
 ```
-
-**2. and then add it to your commands with:**
-
+* after cloning it you will need to move to it's directory:
 ```
-$ sudo cp ipcalc /usr/bin/
+$ cd ipcalc
 ```
+* after moving there you can finally use makefile:
+```
+$ sudo make all
+```
+**after done with that, you can freely use ipcalc command on linux**
 
-**3. Syntax of this is:**
+**2. Syntax of this is:**
 
 ```
 $ ipcalc [OPTION]
 ```
 
-**4. or:**
+**3. or:**
 
 ```
 $ ipcalc [IP] [MASK]
 ```
 
-**5. for the moment being there's only three options:**
+**4. for the moment being there's only three options:**
 
 ```
 -h or --help      Displays info about avaible options.
@@ -37,7 +40,7 @@ $ ipcalc [IP] [MASK]
 -m or --mask      You can input mask address after it.
 ```
 
-**6. example of usage:**
+**5. example of usage:**
 ```
 $ ipcalc -i 192.168.1.0 -m 255.255.255.0
 
