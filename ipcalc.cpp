@@ -54,7 +54,16 @@ int main(int argc, char* argv[]) {
     // command input
     if (argc - 1 == 1) {
         if(string(argv[1]) == "--help" || string(argv[3]) == "-h") {
-            cout << "This is simple subnet ip calculator.\n";
+            #pragma region info
+            cout << "====================================\n";
+            cout << "|   subnet IP Address Calculator   |\n";
+            cout << "====================================\n";
+            cout << "| With this calculator you can     |\n";
+            cout << "| calculate subnet IP address by   |\n";
+            cout << "| getting one of existing subnet   |\n";
+            cout << "| IP host addresses.               |\n";
+            cout << "====================================\n\n";
+            #pragma endregion
             cout << "SYNTAX: ipCalc [OPTION]\n";
             cout << "SYNTAX: ipCalc [IP] [MASK]\n";
             cout << "Commands: \n";
@@ -90,17 +99,6 @@ int main(int argc, char* argv[]) {
                 exit(1);
             }
         }
-
-        #pragma region info
-        cout << "====================================\n";
-        cout << "|   subnet IP Address Calculator   |\n";
-        cout << "====================================\n";
-        cout << "| With this calculator you can     |\n";
-        cout << "| calculate subnet IP address by   |\n";
-        cout << "| getting one of existing subnet   |\n";
-        cout << "| IP host addresses.               |\n";
-        cout << "====================================\n\n";
-        #pragma endregion
         
         #pragma region wr-input-to-str
         istringstream issIP(ip);
