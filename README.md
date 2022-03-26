@@ -1,7 +1,7 @@
 # Subnet IP Address Calculator
 ### subnet ip calculator in c++
 
-With this calculator you can calculate network IP address by getting one of existing subnet IP addresses.
+With this calculator you can calculate subnet IP address by getting one of existing subnet IP host addresses.
 
 **1. You can build it with command:**
 
