@@ -97,10 +97,6 @@ int main(int argc, char* argv[]) {
 
             for (int i = 0; i < 4; i++)
             {
-                if(string(argv[1]) == "-g" || string(argv[1]) == "--get-subnets") {
-                    canCalculate = false;
-                    break;
-                }
                 if (maskSep[i].empty() || maskSep[i].empty()) {
                     cerr << "\033[31mERROR:\033[0m Invalid IP/Mask address\n";
                     exit(1);
@@ -118,7 +114,7 @@ int main(int argc, char* argv[]) {
                 cout << addressSepDecToBin[0] << "." << addressSepDecToBin[1] << "." << addressSepDecToBin[2] << "." << addressSepDecToBin[3] << "\n";
                 exit(0);
             } else if (string(argv[1]) == "-d" || string(argv[1]) == "--calculate-dec") {
-                cout << addressSepDecToBin[0] << "." << addressSepBinToDec[1] << "." << addressSepBinToDec[2] << "." << addressSepBinToDec[3] << "\n";
+                cout << addressSepBinToDec[0] << "." << addressSepBinToDec[1] << "." << addressSepBinToDec[2] << "." << addressSepBinToDec[3] << "\n";
                 exit(0);
             }
             #pragma endregion
