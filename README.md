@@ -18,7 +18,10 @@ ipcalc [OPTION]
 
 ipcalc [IP] [MASK]
 
-**for the moment being there's only three options: 
+**for the moment being there's only three options:**
+
 -h or --help      Displays info about avaible options.
+
 -i or --ip        You can input ip address after it.
--m or --mask      You can input mask address after it.**
+
+-m or --mask      You can input mask address after it.
