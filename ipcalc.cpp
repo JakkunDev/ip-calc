@@ -12,10 +12,13 @@ string ip;
 string mask;
 std::vector <std::string> ipSepVec[4]; // string ip vector
 std::vector <std::string> maskSepVec[4]; // string mask vector
+bool canCalculate = true;
 
 string ipSep[4]; // separated ip addres (dec)
 string maskSep[4]; // separeted mask address (dec)
 string netAddSepBin[4]; // separeted subnet address (bin)
+string ipSepBin[4];
+string maskSepBin[4];
 #pragma endregion
 
 #pragma region supp-functions
@@ -54,38 +57,81 @@ int main(int argc, char* argv[]) {
     // command input
     if (argc - 1 == 1) {
         if(string(argv[1]) == "--help" || string(argv[1]) == "-h") {
-            #pragma region info
-            cout << "   ====================================\n";
-            cout << " > |   subnet IP Address Calculator   |\n";
-            cout << "   ====================================\n";
-            cout << " > | With this calculator you can     |\n";
-            cout << " > | calculate subnet IP address by   |\n";
-            cout << " > | getting one of existing subnet   |\n";
-            cout << " > | IP host addresses.               |\n";
-            cout << "   ====================================\n\n";
             #pragma endregion
             cout << "SYNTAX: ipCalc [OPTION]\n";
             cout << "SYNTAX: ipCalc [IP] [MASK]\n";
             cout << "Commands: \n";
-            cout << "   -h   --help            Displays this message on screen and ends\n";
-            cout << "   -i   --ip[=IP]         You can input ip address after it\n";
-            cout << "   -m   --mask[=MASK]     You can input mask address after it\n";
+            cout << "   -h   --help                     Displays this message on screen and ends\n";
+            cout << "   -i   --ip[=IP]                  You can input ip address after it\n";
+            cout << "   -m   --mask[=MASK]              You can input mask address after it\n";
+            cout << "   -b   --calculate-bin[=BIN]      Calculates decimal mask/ip address from passed binary mask/ip address\n";
+            cout << "   -d   --calculate-dec[=DEC]      Calculates binary mask/ip address from passed decimal mask/ip address\n\n";
+            
+            cout << "Version:   0.2.0\n";
+            cout << "State:     Alpha\n";
         } else {
             cerr << "\033[31mERROR:\033[0m Such argument doesn't exist or command is incomplete!\n";
-            cerr << "Try typing ipcalc \033[32m--help\033[0m for more informations\n";
+            cerr << "Try typing 'ipcalc \033[32m--help\033[0m' for more informations\n";
         }
     } else if (argc - 1 == 2 || argc - 1 == 4) {
         if (argc - 1 == 2) {
             ip.assign(argv[1]);
-            mask.assign(argv[2]);
-        } else {
+            mask.assign(argv[2]); // when using -b, -g or -d this is used for ip, mask and amount of subnets
+            #pragma region wr-input-to-str
+            istringstream issIP(ip);
+            string partIP;
+            while (std::getline(issIP, partIP, '.')) {
+                if (!partIP.empty())
+                    ipSepVec->push_back(partIP);
+            }
+
+            stringstream issMask(mask);
+            string partMask;
+            while (std::getline(issMask, partMask, '.')) {
+                if (!partMask.empty())
+                    maskSepVec->push_back(partMask);
+            }
+
+            std::copy(maskSepVec->begin(), maskSepVec->end(), maskSep);
+            std::copy(ipSepVec->begin(), ipSepVec->end(), ipSep);
+
+            for (int i = 0; i < 4; i++)
+            {
+                if(string(argv[1]) == "-g" || string(argv[1]) == "--get-subnets") {
+                    canCalculate = false;
+                    break;
+                }
+                if (maskSep[i].empty() || maskSep[i].empty()) {
+                    cerr << "\033[31mERROR:\033[0m Invalid IP/Mask address\n";
+                    exit(1);
+                }
+            }
+            #pragma endregion
+            
+            string addressSepDecToBin[4] = { DecToBin(stoi(maskSep[0])), DecToBin(stoi(maskSep[1])),
+                                                DecToBin(stoi(maskSep[2])), DecToBin(stoi(maskSep[3])) };
+            int addressSepBinToDec[4] = { BinToDec(maskSep[0]), BinToDec(maskSep[1]),
+                                                BinToDec(maskSep[2]), BinToDec(maskSep[3]) };   
+
+            #pragma region address-calculations
+            if (string(argv[1]) == "-b" || string(argv[1]) == "--calculate-bin") {
+                cout << addressSepDecToBin[0] << "." << addressSepDecToBin[1] << "." << addressSepDecToBin[2] << "." << addressSepDecToBin[3] << "\n";
+                exit(0);
+            } else if (string(argv[1]) == "-d" || string(argv[1]) == "--calculate-dec") {
+                cout << addressSepDecToBin[0] << "." << addressSepBinToDec[1] << "." << addressSepBinToDec[2] << "." << addressSepBinToDec[3] << "\n";
+                exit(0);
+            }
+            #pragma endregion
+
+            canCalculate = true;
+        } else if (canCalculate) {
             if(string(argv[1]) == "-ip" || string(argv[1]) == "-i") {
                 ip.assign(argv[2]);
             } else if(string(argv[3]) == "-ip" || string(argv[3]) == "-i") {
                 ip.assign(argv[4]);
             } else {
                 cerr << "\033[31mERROR:\033[0m Such argument doesn't exist or command is incomplete!\n";
-                cerr << "Try typing ipcalc \033[32m--help\033[0m for more informations\n";
+                cerr << "'Try typing 'ipcalc \033[32m--help\033[0m' for more informations\n";
                 exit(1);
             }
 
@@ -95,35 +141,17 @@ int main(int argc, char* argv[]) {
                 mask.assign(argv[2]);
             } else {
                 cerr << "\033[31mERROR:\033[0m Such argument doesn't exist or command is incomplete!\n";
-                cerr << "Try typing ipcalc \033[32m--help\033[0m for more informations\n";
+                cerr << "Try typing 'ipcalc \033[32m--help\033[0m' for more informations\n";
                 exit(1);
             }
         }
-        
-        #pragma region wr-input-to-str
-        istringstream issIP(ip);
-        string partIP;
-        while (std::getline(issIP, partIP, '.')) {
-            if (!partIP.empty())
-                ipSepVec->push_back(partIP);
-        }
-
-        stringstream issMask(mask);
-        string partMask;
-        while (std::getline(issMask, partMask, '.')) {
-            if (!partMask.empty())
-                maskSepVec->push_back(partMask);
-        }
-
-        std::copy(maskSepVec->begin(), maskSepVec->end(), maskSep);
-        std::copy(ipSepVec->begin(), ipSepVec->end(), ipSep);
-        #pragma endregion
 
         #pragma region ip-mask-bin
-        string ipSepBin[4] = { DecToBin(stoi(ipSep[0])), DecToBin(stoi(ipSep[1])), 
-                                DecToBin(stoi(ipSep[2])), DecToBin(stoi(ipSep[3])) }; 
-        string maskSepBin[4] = { DecToBin(stoi(maskSep[0])), DecToBin(stoi(maskSep[1])), 
-                                    DecToBin(stoi(maskSep[2])), DecToBin(stoi(maskSep[3])) }; 
+        for (int i = 0; i < 4; i++)
+        {
+            ipSepBin[i] = DecToBin(stoi(ipSep[i]));
+            maskSepBin[i] = DecToBin(stoi(maskSep[i]));
+        }
 
         cout << "   ================================================================\n";
         cout << " > | IP address: " << ip << "\n";
