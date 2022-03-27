@@ -16,7 +16,7 @@ $ cd ipcalc
 ```
 $ sudo make all
 ```
-**after done with that, you can freely use ipcalc command on linux**
+**after done with that, ipcalc has been successfuly added to your linux machine commands**
 
 **2. Syntax of this is:**
 
@@ -30,14 +30,17 @@ $ ipcalc [OPTION]
 $ ipcalc [IP] [MASK]
 ```
 
-**4. for the moment being there's only three options:**
+**4. for the moment being there's only five options:**
 
 ```
--h or --help      Displays info about avaible options.
+-h or --help                     Displays info about avaible options and version of software.
 
--i or --ip        You can input ip address after it.
+-i or --ip[=IP]                  You can input ip address after it
+-m or --mask[=MASK]              You can input mask address after it
 
--m or --mask      You can input mask address after it.
+-b or --calculate-bin[=BIN]      Calculates binary mask/ip address from passed decimal mask/ip address
+
+-d or --calculate-dec[=DEC]      Calculates decimal mask/ip address from passed binary mask/ip address
 ```
 
 **5. example of usage (with output):**
@@ -86,4 +89,10 @@ $ ipcalc 192.168.1.0 255.255.255.0
    ================================================================
  > | Subnet address: 192.168.1.0
    ================================================================
+
+$ ipcalc -b 192.168.1.0
+11000000.10101000.00000001.00000000
+
+$ ipcalc -d 11000000.10101000.00000001.00000000
+192.168.1.0
 ```
