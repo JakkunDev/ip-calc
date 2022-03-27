@@ -40,7 +40,7 @@ $ ipcalc [IP] [MASK]
 -m or --mask[=MASK]              You can input mask address after it
 -b or --calculate-bin[=BIN]      Calculates binary mask/ip address from passed decimal mask/ip address
 -d or --calculate-dec[=DEC]      Calculates decimal mask/ip address from passed binary mask/ip address
--v   --version[=DEC]            Outputs software version in terminal.
+-v or --version[=DEC]            Outputs software version in terminal.
 ```
 
 **5. example of usage (with output):**
