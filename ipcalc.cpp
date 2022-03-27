@@ -1,26 +1,25 @@
-#pragma region code-libs
+#pragma region LIBS
 #include <iostream>
 #include <algorithm> // for copy
 #include <iterator> // for ostream_iterator
 #include <bits/stdc++.h>
 #pragma endregion
 using namespace std;
-#pragma region variables
-string ip;
-string mask;
+#pragma region VARIABLES
+string ip; // ip address inputted by user
+string mask; // mask address inputted by user
 std::vector <std::string> ipSepVec[4]; // string ip vector
 std::vector <std::string> maskSepVec[4]; // string mask vector
 
 string ipSep[4]; // separated ip addres (dec)
+string ipSepBin[4]; // separated ip addres (bin)
 string maskSep[4]; // separeted mask address (dec)
+string maskSepBin[4]; // separeted mask address (bin)
 string subnetSepBin[4]; // separeted subnet address (bin)
-string ipSepBin[4];
-string maskSepBin[4];
 #pragma endregion
-#pragma region supp-functions
+#pragma region SUPP-FUNCTIONS
 // Calculates binary value of decimal input
 string DecToBin(int dec) {
-    int a[10];
     string stringBin;
     for (int i = 7; i >= 0; i--) {
         int k = dec >> i;
@@ -49,7 +48,7 @@ int BinToDec(string str) {
 #pragma endregion
 int main(int argc, char* argv[]) {
 
-    // command input
+    // COMMAND-INPUT
     if (argc - 1 == 1) {
         if(string(argv[1]) == "--help" || string(argv[1]) == "-h") {
             #pragma endregion
@@ -72,7 +71,7 @@ int main(int argc, char* argv[]) {
     } else if (argc - 1 == 2 || argc - 1 == 4) {
         if (argc - 1 == 2) {
             ip.assign(argv[1]);
-            mask.assign(argv[2]); // when using -b, -g or -d this is used for ip, mask and amount of subnets
+            mask.assign(argv[2]); // when using -b or -d this is used for ip, mask
             
             #pragma region wr-input-to-str
             istringstream issIP(ip);
@@ -91,16 +90,9 @@ int main(int argc, char* argv[]) {
 
             std::copy(maskSepVec->begin(), maskSepVec->end(), maskSep);
             std::copy(ipSepVec->begin(), ipSepVec->end(), ipSep);
-
-            for (int i = 0; i < 4; i++)
-            {
-                if (maskSep[i].empty() || maskSep[i].empty()) {
-                    cerr << "\033[31mERROR:\033[0m Invalid IP/Mask address\n";
-                    exit(1);
-                }
-            }
             #pragma endregion
             
+            // Separated and converted mask/ip addresses
             string addressSepDecToBin[4] = { DecToBin(stoi(maskSep[0])), DecToBin(stoi(maskSep[1])),
                                                 DecToBin(stoi(maskSep[2])), DecToBin(stoi(maskSep[3])) };
             int addressSepBinToDec[4] = { BinToDec(maskSep[0]), BinToDec(maskSep[1]),
@@ -170,25 +162,34 @@ int main(int argc, char* argv[]) {
             exit(1);
         }
 
-        #pragma region ip-mask-dec-bin
-                for (int i = 0; i < 4; i++)
-                {
-                    ipSepBin[i] = DecToBin(stoi(ipSep[i]));
-                    maskSepBin[i] = DecToBin(stoi(maskSep[i]));
+        #pragma region IP-MASK-DEC-TO-BIN
+            for (int i = 0; i < 4; i++)
+            {
+                if (maskSep[i].empty() || maskSep[i].empty(), ipSep[i].empty() || ipSep[i].empty()) {
+                    cerr << "\033[31mERROR:\033[0m Invalid IP/Mask address\n";
+                    exit(1);
                 }
+            }
 
-                cout << "   ================================================================\n";
-                cout << " > | IP address: " << ip << "\n";
-                cout << "   ================================================================\n";
-                cout << " > | Mask address: " << mask << "\n";
-                cout << "   ================================================================\n";
-                cout << " > | IP address in Binary: " << ipSepBin[0] << "." << ipSepBin[1] << "." << ipSepBin[2] << "." << ipSepBin[3] << "\n";
-                cout << "   ================================================================\n";
-                cout << " > | Mask address in Binary: " << maskSepBin[0] << "." << maskSepBin[1] << "." << maskSepBin[2] << "." << maskSepBin[3] << "\n";
-                cout << "   ================================================================\n";
-                #pragma endregion
+            for (int i = 0; i < 4; i++) // Separating and converting ip and mask addresses to binary
+            {
+                ipSepBin[i] = DecToBin(stoi(ipSep[i]));
+                maskSepBin[i] = DecToBin(stoi(maskSep[i]));
+            }
+            
+            // output: IP_DEC IP_BIN MASK_DEC MASK_BIN
+            cout << "   ================================================================\n";
+            cout << " > | IP address: " << ip << "\n";
+            cout << "   ================================================================\n";
+            cout << " > | Mask address: " << mask << "\n";
+            cout << "   ================================================================\n";
+            cout << " > | IP address in Binary: " << ipSepBin[0] << "." << ipSepBin[1] << "." << ipSepBin[2] << "." << ipSepBin[3] << "\n";
+            cout << "   ================================================================\n";
+            cout << " > | Mask address in Binary: " << maskSepBin[0] << "." << maskSepBin[1] << "." << maskSepBin[2] << "." << maskSepBin[3] << "\n";
+            cout << "   ================================================================\n";
+            #pragma endregion
 
-        #pragma region subnet
+        #pragma region SUBNET
                 for (int i = 0; i < 4; i++)
                 {
                     for (int j = 0; j < 8; j++)
@@ -201,12 +202,15 @@ int main(int argc, char* argv[]) {
                     }
                 }
                 
+                // output: SUB_BIN
                 cout << " > | Subnet address in Binary: " << subnetSepBin[0] << "." << subnetSepBin[1] << "." << subnetSepBin[2] << "." << subnetSepBin[3] << "\n";
                 cout << "   ================================================================\n";
 
-                string netAddSep[4] = { to_string(BinToDec(subnetSepBin[0])), to_string(BinToDec(subnetSepBin[1])),
-                                        to_string(BinToDec(subnetSepBin[2])), to_string(BinToDec(subnetSepBin[3])) };
+                // calculating decimal subnet address
+                int netAddSep[4] = { BinToDec(subnetSepBin[0]), BinToDec(subnetSepBin[1]),
+                                        BinToDec(subnetSepBin[2]), BinToDec(subnetSepBin[3]) };
                 
+                // output: SUB_DEC
                 cout << " > | Subnet address: " << netAddSep[0] << "." << netAddSep[1] << "." << netAddSep[2] << "." << netAddSep[3] << "\n";
                 cout << "   ================================================================\n";
                 #pragma endregion
