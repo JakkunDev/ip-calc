@@ -1,5 +1,5 @@
 appname := ipcalc
-dir := /usr/bin/
+installDir := /usr/bin/
 
 CXX := clang++
 CXXFLAGS := -std=c++11
@@ -10,7 +10,7 @@ objects  := $(patsubst %.cpp, %.o, $(srcfiles))
 all: $(appname)
 
 $(appname): $(objects)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o ${dir}$(appname) $(objects) $(LDLIBS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o ${installDir}$(appname) $(objects)
 
 depend: .depend
 
