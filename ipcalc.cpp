@@ -26,8 +26,8 @@ int main(int argc, char* argv[]) {
     if (argc - 1 == 1) {
         if(string(argv[1]) == "--help" || string(argv[1]) == "-h") {
             #pragma endregion
-            cout << "SYNTAX: ipCalc [OPTION]\n";
-            cout << "SYNTAX: ipCalc [IP] [MASK]\n";
+            cout << "SYNTAX: ipcalc [OPTION]\n";
+            cout << "SYNTAX: ipcalc [IP] [MASK]\n";
             cout << "Commands: \n";
             cout << "   -h   --help                     Displays this message on screen and ends.\n";
             cout << "   -i   --ip[=IP]                  You can input ip address after it.\n";
