@@ -6,7 +6,7 @@ Version:   0.2.2
 With this calculator you can calculate subnet IP address by getting one of existing subnet IP host addresses.
 
 **1. installation**
-* to intstall it you will need to clone git:
+* to install it you will need to clone git:
 ```
 $ git clone https://github.com/jakkundev/ipcalc.git
 ```
@@ -35,12 +35,18 @@ $ ipcalc [IP] [MASK]
 **4. for the moment being there's only six options:**
 
 ```
--h or --help                     Displays info about avaible options and version of software.
+-h or --help                     Displays info about available options
+                                  and version of software.
 -i or --ip[=IP]                  You can input ip address after it
 -m or --mask[=MASK]              You can input mask address after it
--b or --calculate-bin[=BIN]      Calculates binary mask/ip address from passed decimal mask/ip address
--d or --calculate-dec[=DEC]      Calculates decimal mask/ip address from passed binary mask/ip address
--v or --version[=DEC]            Outputs software version in terminal.
+-b or --calculate-bin[=BIN]      Calculates binary mask/ip address 
+                                  from passed decimal mask/ip address
+-d or --calculate-dec[=DEC]      Calculates decimal mask/ip address
+                                  from passed binary mask/ip address
+-n   --get-new-mask[=AMOUNT]     Outputs how many 1's you have to swap
+                                  with 0's in binary mask address and
+                                  amount of subnets.
+-v or --version                  Outputs software version in terminal.
 ```
 
 **5. example of usage (with output):**
@@ -95,4 +101,8 @@ $ ipcalc -b 192.168.1.0
 
 $ ipcalc -d 11000000.10101000.00000001.00000000
 192.168.1.0
+
+$ ipcalc -n 10
+You will need to swap: 4 '0' in mask
+amount of subnets will be: 16
 ```
