@@ -6,7 +6,7 @@ Version:   0.2.2
 With this calculator you can calculate subnet IP address by getting one of existing subnet IP host addresses.
 
 **1. installation**
-* to intstall it you will need to clone git:
+* to install it you will need to clone git:
 ```
 $ git clone https://github.com/jakkundev/ipcalc.git
 ```
@@ -35,7 +35,7 @@ $ ipcalc [IP] [MASK]
 **4. for the moment being there's only six options:**
 
 ```
--h or --help                     Displays info about avaible options
+-h or --help                     Displays info about available options
                                   and version of software.
 -i or --ip[=IP]                  You can input ip address after it
 -m or --mask[=MASK]              You can input mask address after it
@@ -46,7 +46,7 @@ $ ipcalc [IP] [MASK]
 -n   --get-new-mask[=AMOUNT]     Outputs how many 1's you have to swap
                                   with 0's in binary mask address and
                                   amount of subnets.
--v or --version[=DEC]            Outputs software version in terminal.
+-v or --version                  Outputs software version in terminal.
 ```
 
 **5. example of usage (with output):**
