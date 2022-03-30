@@ -64,3 +64,81 @@ void GetAmount(int amount) {
     
     cout << "You will need to swap: " << i << " '0' in mask\namount of subnets will be: " << a << "\n";
 }
+
+// Get's amount of network's based on mask
+int GetAmountAll(string maskBin) {
+    int a = 0;
+    int o = 1;
+    
+    for (int i = 0; i < 8; i++)
+    {
+        if (maskBin[i] == '1') {
+            a++;
+        }
+    }
+    
+    for (int i = 0; i < a; i++)
+    {
+        o = 2 * o; // squaring
+    }
+    
+
+    return o;
+}
+
+string ReverseBitAddress(string& address) {
+    string reverse = "";
+    for (int i = address.length() - 1; i >= 0; i--)
+    {
+        reverse += address[i];
+    }
+    return reverse;
+}
+
+int GetBit (string bitSegment) {
+    string newBit; // function that will write a bit
+    
+    for (int i = bitSegment.length(); i >= 0; i--)
+    {
+        if (bitSegment[i] == '1' && i == 8) {
+            return 0;
+            break;
+        }
+
+        newBit += bitSegment[i];
+
+        if (bitSegment[i] == '1') {
+            break;
+        }
+    }
+    if (!newBit.empty()) {
+        newBit = ReverseBitAddress(newBit);
+        return BinToDec(newBit) / 2; // returning value that will help in growth rate and divide it by 2
+    }
+    return 0;
+}
+
+string GetAddress(int i, int bit) {
+    int address = 0;
+
+    address = bit * i;
+
+    return to_string(address);
+}
+
+void MakeEmtpty(int j) {
+    switch (j) {
+    case 0:
+        cout << "           ";
+        break;
+    case 1 ... 3:
+        cout << "          ";
+        break;
+    case 4 ... 7:
+        cout << "         ";
+        break;
+    
+    default:
+        break;
+    }
+}
