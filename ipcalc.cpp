@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
             cout << "   -v   --version                  Outputs software version in terminal.\n\n";
         } else if(string(argv[1]) == "-v" || string(argv[1]) == "--version") {
                 cout << "Version:   0.3.0\n";
-                cout << "State:     Alpha\n";
+                cout << "State:     Beta\n";
         } else {
             cerr << "\033[31mERROR:\033[0m Such argument doesn't exist or command is incomplete!\n";
             cerr << "Try typing 'ipcalc \033[32m--help\033[0m' for more informations\n";
