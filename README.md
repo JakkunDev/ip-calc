@@ -43,9 +43,10 @@ $ ipcalc [IP] [MASK]
                                   from passed decimal mask/ip address
 -d or --calculate-dec[=DEC]      Calculates decimal mask/ip address
                                   from passed binary mask/ip address
--n   --get-new-mask[=AMOUNT]     Outputs how many 1's you have to swap
+-n or --get-new-mask[=AMOUNT]    Outputs how many 1's you have to swap
                                   with 0's in binary mask address and
                                   amount of subnets.
+-a or --all[=IP][=MASK]          Displays info about all available subnets.
 -v or --version                  Outputs software version in terminal.
 ```
 
@@ -105,4 +106,15 @@ $ ipcalc -d 11000000.10101000.00000001.00000000
 $ ipcalc -n 10
 You will need to swap: 4 '0' in mask
 amount of subnets will be: 16
+
+$ ipcalc -a 130.95.0.0 255.255.224.0
+   subnet number       Subnet Address       Begin Address        Last Address         Broadcast Address
+         1             130.95.0.0           130.95.0.1           130.95.31.254           130.95.31.255           
+         2             130.95.32.0          130.95.32.1          130.95.63.254          130.95.63.255          
+         3             130.95.64.0          130.95.64.1          130.95.95.254          130.95.95.255          
+         4             130.95.96.0          130.95.96.1          130.95.127.254          130.95.127.255          
+         5             130.95.128.0         130.95.128.1         130.95.159.254         130.95.159.255         
+         6             130.95.160.0         130.95.160.1         130.95.191.254         130.95.191.255         
+         7             130.95.192.0         130.95.192.1         130.95.223.254         130.95.223.255         
+         8             130.95.224.0         130.95.224.1         130.95.255.254         130.95.255.255
 ```
